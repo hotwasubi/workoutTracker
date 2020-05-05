@@ -3,8 +3,8 @@ const db = require('../models/');
 module.exports = function (app) {
     app.get("/api/workouts", (req, res) => {
         db.Workout.find({})
-        .then(dbWorkout => {
-            res.json(dbWorkout);
+        .then(workoutdb => {
+            res.json(workoutdb);
         })
         .catch(err => {
             res.status(400).json(err);
@@ -30,17 +30,17 @@ module.exports = function (app) {
                     }
                 }
             })
-            .then(dbWorkout => {
-                res.json(dbWorkout)
+            .then(workoutdb => {
+                res.json(workoutdb)
             })
             .catch(err => {
                 res.json(err)
             })
     });
-    app.post("/api/workouts", ({ body }), res => {
+    app.post("/api/workouts", ({ body }, res ) => {
         db.Workout.create(body)
-        .then(dbWorkout => {
-            res.json(dbWorkout);
+        .then(workoutdb => {
+            res.json(workoutdb);
         })
         .catch(err => {
             res.status(400).json(err);
@@ -48,8 +48,8 @@ module.exports = function (app) {
     });
     app.get("/api/workouts/range", (req, res) => {
         db.Workout.find({}).limit(7)
-        .then(dbWorkout => {
-            res.json(dbWorkout);
+        .then(workoutdb => {
+            res.json(workoutdb);
         })
         .catch(err => {
             res.json(err);

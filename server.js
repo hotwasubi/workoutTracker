@@ -13,11 +13,11 @@ require("./routes/htmlRoutes")(app);
 
 app.use(express.static("public"));
 
-mongoose.connect(process.env.MONGOBD_URI || "mongdb://localhost/workout", {
+mongoose.connect(process.env.MONGOBD_URI || "mongodb://localhost/workout", {
     useNewUrlParser: true,
     useFindAndModify: false
 });
 
 app.listen(PORT, () => {
-    Console.log(`We're live on port ${PORT}!` );
+    console.log(`We're live on port ${PORT}!` );
 });
